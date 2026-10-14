@@ -105,7 +105,6 @@ public final class MannequinAdapter implements BotEntityAdapter {
         eq.setHelmet(copy(inv.armor(3)));
         eq.setItemInMainHand(copy(inv.held()));
         eq.setItemInOffHand(copy(inv.offhand()));
-        for (EquipmentSlot s : RENDER_SLOTS) eq.setDropChance(s, 0f); // drops are handled by the plugin, once
     }
 
     private static ItemStack copy(ItemStack s) { return BotInventory.isEmpty(s) ? null : s.clone(); }
