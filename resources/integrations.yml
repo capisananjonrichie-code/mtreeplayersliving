@@ -1,0 +1,22 @@
+# Optional plugin integrations. NOTHING here is required; the plugin runs with none of them installed.
+# Stage 1 only DETECTS these (see /mtreebots debug for what each one means). Setting enabled: false hides a
+# plugin from the plugin's own checks.
+config-version: 1
+log-detected-plugins: true
+plugins:
+  LuckPerms: {enabled: true}
+  SkinsRestorer: {enabled: true}
+  Geyser-Spigot: {enabled: true}
+  floodgate: {enabled: true}
+  ViaVersion: {enabled: true}
+  Essentials: {enabled: true}
+  Graves: {enabled: true}
+  HeadDrop: {enabled: true}
+  LevelledMobs: {enabled: true}
+  ProtocolLib: {enabled: true}
+  WorldGuard: {enabled: true}
+  GriefPrevention: {enabled: true}
+  Towny: {enabled: true}
+  Lands: {enabled: true}
+  Dynamic_World_Events: {enabled: true}
+  voicechat: {enabled: true}

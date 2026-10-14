@@ -1,0 +1,45 @@
+# Personality archetypes (Stage 1: generated + stored; they influence combat-style and goal choice.
+# Behaviour that USES traits arrives in later stages).
+config-version: 1
+
+# How many long-term goals each new bot picks (weighted by its personality).
+goals-per-bot: 3
+
+# weight: relative chance of the archetype. traits: [min, max] in 0..1; unlisted traits roll in [0.1, 0.9].
+# Trait names: aggression friendliness courage curiosity sociability caution resourcefulness
+#              building_preference combat_preference cooperation risk_tolerance
+archetypes:
+  brawler:
+    weight: 1.0
+    traits:
+      aggression: [0.6, 0.95]
+      courage: [0.6, 0.95]
+      caution: [0.05, 0.4]
+      combat_preference: [0.6, 0.95]
+  builder:
+    weight: 1.0
+    traits:
+      building_preference: [0.7, 1.0]
+      resourcefulness: [0.6, 0.9]
+      aggression: [0.0, 0.3]
+  explorer:
+    weight: 1.0
+    traits:
+      curiosity: [0.7, 1.0]
+      risk_tolerance: [0.5, 0.9]
+  trader:
+    weight: 0.8
+    traits:
+      sociability: [0.6, 0.95]
+      friendliness: [0.6, 0.95]
+      cooperation: [0.6, 0.95]
+  survivalist:
+    weight: 1.0
+    traits:
+      caution: [0.6, 0.9]
+      resourcefulness: [0.6, 0.9]
+  loner:
+    weight: 0.6
+    traits:
+      sociability: [0.0, 0.3]
+      curiosity: [0.4, 0.8]

@@ -1,0 +1,43 @@
+# Bot identity defaults (Stage 1)
+config-version: 1
+
+# Display names for newly minted bots. Must be 3-16 chars of A-Z a-z 0-9 _ (others are ignored).
+# Names already used by a bot or a real player are skipped; numbered variants are used if the pool runs out.
+name-pool:
+  - Kuya_Jun
+  - Ate_Mara
+  - Tala
+  - Bayani
+  - Dalisay
+  - Mayumi
+  - Lakan
+  - Amihan
+  - Tamaraw
+  - Kidlat
+  - Luningning
+  - Mangga
+  - Pilandok
+  - Sampaguita
+  - Bituin
+  - Hiraya
+
+skins:
+  # default: vanilla mannequin skin (no network).
+  # pool:    each new bot gets a random entry from 'pool' below.
+  mode: default
+  # Entries: "player:<MinecraftName>" (async Mojang lookup, needs internet; falls back to default on failure)
+  #          "texture:<base64value>:<base64signature>" (no lookup)
+  pool: []
+
+appearance:
+  show-name-tag: true
+  # Text under the name tag. Empty = none (vanilla would show "Mannequin").
+  description: ""
+
+starting:
+  health: 20.0
+  hunger: 20
+
+removal:
+  # /mtreebots remove drops the bot's items on the ground. false = items are discarded.
+  drop-inventory-on-remove: true

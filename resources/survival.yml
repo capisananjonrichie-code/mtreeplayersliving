@@ -1,0 +1,36 @@
+# Survival: gathering, crafting, block breaking/placing (Stage 4).
+# IMPLEMENTED: chop natural trees, mine exposed stone/coal, wood -> stone tool ladder, place a crafting table,
+#              real drops from real blocks, tool wear, inventory-space handling.
+# NOT IMPLEMENTED YET: smelting/iron tier, tunnelling/underground mining, farming/animals, storage chests, trading.
+config-version: 1
+
+# Master switch for autonomous gathering/crafting. Bots still wander/fight when false.
+enabled: true
+
+block-interaction:
+  # false = bots NEVER break or place any block.
+  enabled: true
+  reach: 4.5
+  # Bots are not Players, so claim plugins (WorldGuard, GriefPrevention, Towny, Lands) cannot be asked for permission.
+  # false (default, recommended) = bots do NOTHING to blocks while any such plugin is installed.
+  # true  = YOU accept the risk (only natural-block/ no-nearby-structure checks and protected-regions still apply).
+  allow-with-claim-plugins: false
+  # A block is refused if anything that looks player-built (planks, bricks, glass, doors...) is within this many blocks.
+  avoid-artificial-radius: 3
+  # Also add cuboids in worlds.yml (protected-regions): bots never touch blocks inside them.
+
+# What bots may break (hard-coded whitelist, not configurable on purpose): stone, granite, diorite, andesite,
+# coal ore, dirt, grass block, sand, gravel, and logs of NATURAL trees. Everything else is refused.
+# What bots may place: crafting tables from their own inventory.
+
+gathering:
+  search-radius: 10
+  # Max blocks examined per search (performance cap).
+  scan-budget-blocks: 5000
+  scan-interval-seconds: 3
+  # After a failed search the bot goes back to wandering (exploring) and retries after this long.
+  failure-backoff-seconds: 45
+
+crafting:
+  # Time a craft takes.
+  craft-ticks: 40

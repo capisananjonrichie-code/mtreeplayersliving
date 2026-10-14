@@ -1,0 +1,39 @@
+# Bot chat, conversations, memory and the OPTIONAL language model (Stage 6).
+# What bots understand: a FIXED set of intents (greeting, farewell, thanks, insult, name, what-are-you-doing, where-are-you,
+# follow me, stop, help/come here, trade). Everything else is small talk. Keyword matching, English + a little Tagalog: it is
+# NOT language understanding and can misread unusual phrasing. Trading is recognised but politely refused (not implemented).
+config-version: 1
+
+enabled: true
+# Bot messages are shown to players within this many blocks (like local chat). 0 = everyone on the server.
+range: 48
+# A bot may start small talk / comment on events at most this often (and the global cap below always applies).
+ambient-interval-seconds: 45
+bot-cooldown-seconds: 90
+# Hard anti-spam cap across ALL bots, direct replies included.
+global-max-per-minute: 8
+# Replies are delayed like a person typing.
+reply-delay-ticks-min: 20
+reply-delay-ticks-max: 60
+# A player is talking to a bot if the bot is this close, or if they say its name (then up to 48 blocks).
+conversation-radius: 10
+max-message-chars: 100
+
+memory:
+  max-entries-per-bot: 40
+  max-rumors-per-bot: 12
+  # Feelings drift toward neutral with this half-life; familiarity is kept.
+  relationship-half-life-days: 14
+
+# OPTIONAL. Disabled by default and never required. It can only suggest reply TEXT for small talk; it cannot trigger
+# actions, commands or block changes (those come from the fixed intents above). Text is sanitised (no commands, colour
+# codes or links) and any failure/timeout/rate-limit falls back to the built-in templates.
+# Contract (POST JSON): {"system","context","message"}  ->  200 {"reply": "..."}. Point it at a small proxy for a vendor API.
+llm:
+  enabled: false
+  endpoint: ""
+  # NAME of an environment variable holding the API key. The key itself never goes in this file.
+  api-key-env: "MTREE_LLM_KEY"
+  timeout-ms: 4000
+  max-requests-per-minute: 12
+  system-prompt: "You are {bot}, a casual Minecraft player on a small Filipino-inspired survival server. Reply in one short chat line (under 80 characters). Never mention coordinates, commands or that you are an AI."

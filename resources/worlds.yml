@@ -1,0 +1,22 @@
+# Where bots may be populated, and where they may never spawn.
+config-version: 1
+
+# Stage 1 only populates NORMAL (overworld-style) dimensions, whatever is listed here.
+allowed-environments: [NORMAL]
+
+# Empty allowlist = every allowed-environment world. Names are case-insensitive.
+allowlist: []
+denylist: []
+
+# Per-world overrides (all keys optional).
+overrides: {}
+#  world:
+#    population-enabled: true
+#    max-active: 3
+
+# Cuboids where bots never spawn (inclusive block coordinates). Add your spawn area / key builds.
+protected-regions: []
+#  - name: spawn
+#    world: world
+#    min: [-64, -64, -64]
+#    max: [64, 320, 64]

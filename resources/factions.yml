@@ -1,0 +1,23 @@
+# Factions (bot groups) and social interaction (Stage 6).
+# IMPLEMENTED: bots that like each other and are group-minded form factions on their own; members help each other when
+#              attacked; bots chat, share (coarse, unreliable) rumors and drift into friendships/rivalries.
+# NOT IMPLEMENTED YET: territory claims, territorial conflicts, expeditions, group combat tactics beyond mutual assistance.
+config-version: 1
+
+enabled: true
+auto-form: true
+# Both bots must feel at least this much affinity (and trust >= 30) toward each other.
+min-affinity-to-form: 60
+max-faction-size: 4
+
+# Faction members within this many blocks help a member who is attacked.
+assist-radius: 24
+# false (default): members only help against MOBS. true: they may also help against a real player who attacked their friend.
+assist-against-players: false
+
+# Bots within this distance may chat with each other, share rumors and grow friendships.
+interaction-radius: 12
+interaction-interval-seconds: 60
+
+# Faction names are "<prefix> <founder name>" (cut to 24 characters).
+name-prefixes: [Tropa, Samahan, Kapatiran, Lahi]

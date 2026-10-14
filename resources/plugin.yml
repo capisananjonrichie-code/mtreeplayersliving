@@ -1,0 +1,38 @@
+name: MTREELivingPlayers
+version: '${version}'
+main: net.mtree.livingplayers.MTREELivingPlayersPlugin
+api-version: '1.21'
+description: Persistent player-like AI characters for the MTREE SMP (Stage 1 - foundation).
+authors: [MTREE]
+# Only used so optional plugins are loaded BEFORE us (accurate detection). NOTHING is required.
+softdepend: [LuckPerms, SkinsRestorer, Geyser-Spigot, floodgate, ViaVersion, Essentials, Graves, HeadDrop, LevelledMobs, WorldGuard, GriefPrevention]
+# Paper downloads this at first start. Paper may already bundle a SQLite driver; the server's copy wins if so.
+libraries:
+  - org.xerial:sqlite-jdbc:3.46.1.3
+
+commands:
+  mtreebots:
+    description: Manage MTREE Living Players bots
+    usage: /<command> help
+
+permissions:
+  mtreebots.admin:
+    description: Everything below
+    default: op
+    children:
+      mtreebots.spawn: true
+      mtreebots.manage: true
+      mtreebots.debug: true
+      mtreebots.reload: true
+  mtreebots.spawn:
+    description: Spawn and despawn bots
+    default: false
+  mtreebots.manage:
+    description: List, inspect, teleport to, equip, enable/disable, remove bots, save
+    default: false
+  mtreebots.debug:
+    description: Diagnostics
+    default: false
+  mtreebots.reload:
+    description: Reload configuration
+    default: false

@@ -1,0 +1,28 @@
+# Blueprint construction (Stage 5).
+# IMPLEMENTED: blueprint files (blueprints/*.json), flat-site selection away from player builds, gathering the planks,
+#              incremental placement (rate-limited), progress saved so a half-built house resumes after a restart.
+# NOT IMPLEMENTED YET: doors/glass/furniture (need smelting/crafting variety), farms, bridges, roads, repair, settlements.
+config-version: 1
+
+enabled: true
+
+# Bots start a build on their own only after finishing the stone-tool ladder, and only if they are builders by nature
+# (building_preference >= min-building-preference, or a build-related long-term goal). Admins can always use /mtreebots build.
+auto-start: true
+min-building-preference: 0.6
+# One house per bot by default: no instant towns.
+max-projects-per-bot: 1
+
+# Site search around the bot. Each candidate check reads a few hundred blocks, so keep the candidate count low.
+site-search-radius: 24
+max-site-candidates: 12
+# No player-made block may be within this many blocks of the footprint.
+site-margin: 3
+
+# One block every N ticks (10 = 2 blocks per second).
+place-interval-ticks: 10
+# Give up (ABANDONED) if more than this many cells turn out to be occupied by something else.
+max-skipped-blocks: 6
+
+# Blueprint files live in plugins/MTREELivingPlayers/blueprints/. Format: see starter_hut.json.
+# Only the PLANKS material group is supported for now; invalid files are rejected with a console message.

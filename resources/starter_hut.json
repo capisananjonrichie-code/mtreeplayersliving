@@ -1,0 +1,11 @@
+{
+  "name": "starter_hut",
+  "description": "5x5 wooden shelter: 3-high walls, a 1x2 doorway, two window gaps, flat roof. 69 planks (about 18 logs). No door/glass yet.",
+  "palette": { "W": "PLANKS" },
+  "layers": [
+    ["WW.WW", "W...W", "W...W", "W...W", "WWWWW"],
+    ["WW.WW", "W...W", ".....", "W...W", "WWWWW"],
+    ["WWWWW", "W...W", "W...W", "W...W", "WWWWW"],
+    ["WWWWW", "WWWWW", "WWWWW", "WWWWW", "WWWWW"]
+  ]
+}

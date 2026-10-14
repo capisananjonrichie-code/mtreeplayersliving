@@ -1,0 +1,96 @@
+# MTREE: Living Players - main configuration (Stage 1)
+# Missing keys fall back to the defaults shipped inside the jar. Values are range-checked on load.
+config-version: 1
+
+# Extra logging. Also toggle live with /mtreebots debug toggle.
+debug: false
+
+persistence:
+  # How often changed bots are written to bots.db (asynchronously, one transaction). Min 15.
+  save-interval-seconds: 120
+  # Rolling database backups (VACUUM INTO) kept in backups/. Taken at every startup. 0 = off. Needs a restart.
+  backups-to-keep: 3
+
+lifecycle:
+  # Hard cap on bots with a live entity at the same time. Keep low on small servers.
+  max-active-bots: 4
+  # How often the lifecycle manager checks bots (ticks). 40 = 2s.
+  reconcile-interval-ticks: 40
+  # A bot with no real player within this many blocks is parked (entity removed, identity kept)...
+  despawn-distance: 160
+  # ...after this grace period.
+  despawn-grace-seconds: 90
+
+death:
+  # true: the bot's whole inventory/equipment drops where it died (items leave the bot - never duplicated).
+  # false: the bot keeps everything (keep-inventory).
+  drop-inventory: true
+  respawn-enabled: true
+  respawn-delay-seconds: 300
+  # false: experience resets to 0 on death.
+  keep-experience: true
+  # false: players cannot hurt bots at all (not recommended; bots are meant to be fightable).
+  players-can-damage-bots: true
+
+population:
+  enabled: true
+  # Total identities that may exist (active + inactive + dead...).
+  max-population: 8
+  # Target number of ACTIVE bots per eligible online player (capped by lifecycle.max-active-bots).
+  target-active-per-player: 1.0
+  # How often the director considers adding/removing a bot.
+  spawn-interval-seconds: 90
+  # Chance that a cycle below target actually spawns something.
+  spawn-chance: 0.5
+  # When below max-population, chance to mint a brand-new identity instead of reusing an INACTIVE one.
+  new-identity-chance: 0.3
+  # Encounter ring around the chosen player (blocks).
+  min-encounter-distance: 48
+  max-encounter-distance: 96
+  # The same bot will not be re-spawned for the same player within this time.
+  encounter-cooldown-seconds: 900
+  # The same bot will not be re-spawned by the director at all within this time.
+  bot-spawn-cooldown-seconds: 600
+  # Reject spots any player could currently see.
+  avoid-line-of-sight: true
+  # Never spawn within this distance of ANY player.
+  min-distance-from-any-player: 32
+  # Hard bound on spot searches per cycle (performance).
+  max-attempts-per-cycle: 12
+  # Skip spawning while 1-minute TPS is below this.
+  tps-throttle-below: 17.0
+
+spawn-safety:
+  min-y: -60
+  max-y: 316
+  allow-water: false
+  # Reject spots with lava/fire/cactus/etc. within this many blocks.
+  hazard-radius: 1
+  # Reject spots near blocks that look player-built (planks, bricks, glass, doors...). 0 = off.
+  avoid-artificial-blocks-radius: 3
+
+navigation:
+  # Master switch for bot movement (pathfinding + walking + wandering).
+  enabled: true
+  # Hard bounds on ONE path search (performance). Searches read loaded chunks only.
+  max-path-nodes: 1500
+  max-path-distance: 48
+  # Largest drop a path may include (3 = no fall damage).
+  max-drop: 3
+  # Path searches allowed per server tick across all bots.
+  max-path-calcs-per-tick: 1
+  # Replan attempts after getting stuck/knocked off-path before giving up on a destination.
+  repath-limit: 3
+  # Blocks per tick (0.20 = 4 blocks/s ~ player walking; sprint ~ 5.4 blocks/s).
+  walk-speed: 0.20
+  sprint-speed: 0.26
+  # Idle bots wander to random reachable spots near them, pausing in between.
+  wander-enabled: true
+  wander-radius-min: 8
+  wander-radius-max: 24
+  wander-pause-min-seconds: 3
+  wander-pause-max-seconds: 12
+  # Wander destinations closer than this to any player are rejected (player avoidance). 0 = off.
+  avoid-player-distance: 12
+  # /mtreebots follow keeps this distance.
+  follow-distance: 3.0

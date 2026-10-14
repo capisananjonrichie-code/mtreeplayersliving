@@ -1,0 +1,79 @@
+# Combat configuration (Stage 3: melee only).
+# IMPLEMENTED: sword/axe/fist melee, vanilla attack cooldown + crits, eating, retreat/re-engage, group awareness,
+#              strafing, gear switching, hunger/regeneration/starvation.
+# NOT IMPLEMENTED YET: bows/crossbows, shields, maces/wind charges, ender pearls, cobwebs, water-bucket clutch,
+#                      enchantment-aware damage, bot-vs-bot fights.
+config-version: 1
+
+# Relative chance that a new bot gets each skill level.
+skill-spawn-weights:
+  BEGINNER: 50
+  INTERMEDIATE: 30
+  ADVANCED: 15
+  EXPERT: 5
+
+enabled: true
+# Simulate hunger, regeneration and starvation for ACTIVE bots (healing costs food; there is no free healing).
+vitals-enabled: true
+
+# NEVER: bots never attack real players.
+# RETALIATE_ONLY: only a player who hit the bot within retaliation-window-seconds. (Bots always fight hostile mobs.)
+attack-players: RETALIATE_ONLY
+retaliation-window-seconds: 30
+
+reach: 3.0
+scan-interval-ticks: 10
+# Weapons lose durability on hit and break; there is no free repair.
+weapon-durability: true
+
+# Per-skill tuning. Even EXPERT keeps a reaction delay, a turn-rate limit and a non-zero mistake chance.
+# Hard limits enforced on load: reaction-ticks >= 2, mistake-chance >= 0.01, facing-tolerance-deg >= 5, turn-rate-deg <= 45.
+skills:
+  BEGINNER:
+    reaction-ticks: 14
+    facing-tolerance-deg: 40
+    turn-rate-deg: 14
+    mistake-chance: 0.25
+    crit-chance: 0.02
+    strafe-chance: 0.10
+    eat-below: 0.35
+    retreat-below: 0.25
+    reengage-above: 0.70
+    max-opponents: 1
+    awareness-range: 12
+  INTERMEDIATE:
+    reaction-ticks: 9
+    facing-tolerance-deg: 25
+    turn-rate-deg: 20
+    mistake-chance: 0.14
+    crit-chance: 0.12
+    strafe-chance: 0.30
+    eat-below: 0.45
+    retreat-below: 0.30
+    reengage-above: 0.65
+    max-opponents: 2
+    awareness-range: 16
+  ADVANCED:
+    reaction-ticks: 5
+    facing-tolerance-deg: 14
+    turn-rate-deg: 28
+    mistake-chance: 0.07
+    crit-chance: 0.30
+    strafe-chance: 0.50
+    eat-below: 0.50
+    retreat-below: 0.30
+    reengage-above: 0.60
+    max-opponents: 3
+    awareness-range: 20
+  EXPERT:
+    reaction-ticks: 3
+    facing-tolerance-deg: 8
+    turn-rate-deg: 35
+    mistake-chance: 0.03
+    crit-chance: 0.55
+    strafe-chance: 0.70
+    eat-below: 0.55
+    retreat-below: 0.30
+    reengage-above: 0.60
+    max-opponents: 3
+    awareness-range: 24
