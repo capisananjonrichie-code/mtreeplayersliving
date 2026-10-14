@@ -1,0 +1,5 @@
+package org.bukkit.configuration.file;
+public class YamlConfiguration implements org.bukkit.configuration.Configuration { public static YamlConfiguration loadConfiguration(java.io.File f){return null;} public static YamlConfiguration loadConfiguration(java.io.Reader r){return null;}
+ public void setDefaults(org.bukkit.configuration.Configuration c){} public int getInt(String p){return 0;} public int getInt(String p,int d){return d;} public double getDouble(String p){return 0;} public double getDouble(String p,double d){return 0;} public boolean getBoolean(String p){return false;} public boolean getBoolean(String p,boolean d){return false;}
+ public String getString(String p){return null;} public String getString(String p,String d){return d;} public java.util.List<String> getStringList(String p){return null;} public java.util.List<Double> getDoubleList(String p){return null;} public java.util.Set<String> getKeys(boolean d){return null;}
+ public org.bukkit.configuration.ConfigurationSection getConfigurationSection(String p){return null;} public boolean contains(String p){return false;} public java.util.List<java.util.Map<?,?>> getMapList(String p){return null;} }

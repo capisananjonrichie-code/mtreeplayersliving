@@ -1,0 +1,3 @@
+package org.bukkit.inventory;
+public class ItemStack implements Cloneable { public ItemStack(org.bukkit.Material m){} public ItemStack(org.bukkit.Material m,int n){} public org.bukkit.Material getType(){return null;} public int getAmount(){return 0;} public void setAmount(int a){}
+ public int getMaxStackSize(){return 64;} public boolean isSimilar(ItemStack o){return false;} public ItemStack clone(){return this;} public org.bukkit.inventory.meta.ItemMeta getItemMeta(){return null;} public boolean setItemMeta(org.bukkit.inventory.meta.ItemMeta m){return true;} public byte[] serializeAsBytes(){return null;} public static ItemStack deserializeBytes(byte[] b){return null;} }

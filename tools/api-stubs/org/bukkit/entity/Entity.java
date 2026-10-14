@@ -1,0 +1,4 @@
+package org.bukkit.entity;
+public interface Entity extends org.bukkit.projectiles.ProjectileSource { java.util.UUID getUniqueId(); boolean isValid(); void remove(); org.bukkit.Location getLocation(); org.bukkit.World getWorld();
+ org.bukkit.persistence.PersistentDataContainer getPersistentDataContainer(); void setPersistent(boolean p); void customName(net.kyori.adventure.text.Component c); void setCustomNameVisible(boolean v);
+ void setInvulnerable(boolean v); boolean isDead(); org.bukkit.util.Vector getVelocity(); void setVelocity(org.bukkit.util.Vector v); void setRotation(float y,float p); boolean isOnGround(); boolean isInWater(); float getFallDistance(); java.util.List<Entity> getNearbyEntities(double x,double y,double z); java.util.concurrent.CompletableFuture<Boolean> teleportAsync(org.bukkit.Location l); }
